@@ -468,7 +468,7 @@ func (b *Cloud) renderPlanLogs(ctx context.Context, op *backend.Operation, run *
 					// print the line. This maintains backwards compatibility for
 					// users who do not wish to enable structured output in their
 					// workspace.
-					b.CLI.Output(string(line))
+					b.CLI.Output(b.Colorize().Color(string(line)))
 					continue
 				}
 
