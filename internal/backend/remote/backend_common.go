@@ -420,6 +420,7 @@ func (b *Remote) checkPolicy(stopCtx, cancelCtx context.Context, op *backend.Ope
 			return fmt.Errorf(msgPrefix + " hard failed.")
 		case tfe.PolicySoftFailed:
 			runUrl := fmt.Sprintf(runHeader, b.hostname, b.organization, op.Workspace, r.ID)
+			b.CLI.Output(b.Colorize().Color(strings.TrimSpace(runUrl) + "\n"))
 
 			if op.Type == backend.OperationTypePlan || op.UIOut == nil || op.UIIn == nil ||
 				!pc.Actions.IsOverridable || !pc.Permissions.CanOverride {
